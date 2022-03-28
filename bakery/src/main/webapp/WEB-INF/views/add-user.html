@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!-- ========== HEADER ========== -->
+
+<th:block th:replace="layout/head1 :: head1"/>
+
+<!-- ========== END HEADER ========== -->
+
+<body>
+<main id="content" role="main" class="main">
+    <!-- Content -->
+    <div class="content container-fluid">
+        <!-- Step Form -->
+        <form id="frmCreate" class="js-step-form py-md-5" data-hs-step-form-options='{
+              "progressSelector": "#addUserStepFormProgress",
+              "stepsSelector": "#addUserStepFormContent",
+              "endSelector": "#addUserFinishBtn",
+              "isValidate": false
+              }' th:object="${user}" method="post" enctype="multipart/form-data">
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-8">
+
+                    <!-- Content Step Form -->
+                    <div id="addUserStepFormContent">
+                        <!-- Card -->
+                        <div id="addUserStepProfile" class="card card-lg active">
+                            <!-- Body -->
+                            <div class="card-body">
+
+<!--                                &lt;!&ndash;                                AVATAR&ndash;&gt;-->
+<!--                                &lt;!&ndash; Form Group &ndash;&gt;-->
+<!--                                <div class="row form-group">-->
+<!--                                    <label class="col-sm-3 col-form-label input-label">Avatar</label>-->
+
+<!--                                    <div class="col-sm-9">-->
+<!--                                        <div class="d-flex align-items-center">-->
+<!--                                            &lt;!&ndash; Avatar &ndash;&gt;-->
+<!--                                            <label class="avatar avatar-xl avatar-circle avatar-uploader mr-5"-->
+<!--                                                   for="avatar">-->
+<!--                                                <img id="avatarImg" class="avatar-img" src="assets\img\160x160\img1.jpg"-->
+<!--                                                     alt="Image Description">-->
+
+<!--                                                <input  type="file" class="js-file-attach avatar-uploader-input"-->
+<!--                                                       id="avatar" name="avatar" data-hs-file-attach-options='{-->
+<!--                                                    "textTarget": "#avatarImg",-->
+<!--                                                    "mode": "image",-->
+<!--                                                    "targetAttr": "src",-->
+<!--                                                    "resetTarget": ".js-file-attach-reset-img",-->
+<!--                                                    "resetImg": "./assets/img/160x160/img1.jpg",-->
+<!--                                                    "allowTypes": [".png", ".jpeg", ".jpg"]-->
+<!--                                                    }' >-->
+<!--                                                <span class="avatar-uploader-trigger">-->
+<!--                                                    <i class="tio-edit avatar-uploader-icon shadow-soft"></i>-->
+<!--                                                </span>-->
+<!--                                            </label>-->
+<!--                                            &lt;!&ndash; End Avatar &ndash;&gt;-->
+
+<!--                                            <button type="button" class="js-file-attach-reset-img btn btn-white">-->
+<!--                                                Delete-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; End Form Group &ndash;&gt;-->
+
+                                <!-- Form Group -->
+<!--                                <div class="row form-group">-->
+<!--                                    <label for="avatar" class="col-sm-3 col-form-label input-label">Avatar</label>-->
+
+<!--                                    <div class="col-sm-9">-->
+<!--                                        <input type="file" class="form-control" th:field="${user.avatar}" name="avatar" id="avatar">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="fullName" class="col-sm-3 col-form-label input-label">Full Name
+                                        <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
+                                           data-placement="top"></i>
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-sm-down-break">
+                                            <input type="text" class="form-control" th:field="${user.fullName}" name="fullName" id="fullName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="age" class="col-sm-3 col-form-label input-label">Age</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" th:field="${user.age}" name="age" id="age">
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" th:field="${user.email}" name="email" id="email">
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="address" class="col-sm-3 col-form-label input-label">Address</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" th:field="${user.address}" name="address" id="address">
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="phone" class="col-sm-3 col-form-label input-label">Phone</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="tel" class="form-control" th:field="${user.phone}" name="phone" id="phone">
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="password" class="col-sm-3 col-form-label input-label">Password</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" th:field="${user.password}" name="password" id="password">
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                            </div>
+                            <!-- End Body -->
+
+
+                            <!-- Footer -->
+                            <div class="card-footer d-flex justify-content-end align-items-center">
+                                <button type="submit" id="btnCreate" class="btn btn-outline-primary">
+                                    Create Customer
+                                </button>
+                            </div>
+                            <!-- End Footer -->
+
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- End Message Body -->
+                    </div>
+                </div>
+                <!-- End Row -->
+            </div>
+        </form>
+        <!-- End Step Form -->
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+
+    <th:block th:replace="layout/footer :: footer"/>
+
+
+    <!-- End Footer -->
+</main>
+
+<!-- ========== MAIN CONTENT ========== -->
+
+<!-- Navbar Vertical -->
+
+<!-- End Navbar Vertical -->
+
+<!--<main id="content" role="main" class="main">-->
+
+<!--    &lt;!&ndash; Content &ndash;&gt;-->
+
+<!--    &lt;!&ndash; End Content &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Footer &ndash;&gt;-->
+
+
+<!--    &lt;!&ndash; End Footer &ndash;&gt;-->
+
+<!--</main>-->
+
+<!-- ========== END MAIN CONTENT ========== -->
+
+<!-- ========== SECONDARY CONTENTS ========== -->
+
+<!-- Keyboard Shortcuts -->
+
+<!-- End Keyboard Shortcuts -->
+
+<!-- Activity -->
+
+<div id="activitySidebar" class="hs-unfold-content sidebar sidebar-bordered sidebar-box-shadow">
+    <div class="card card-lg sidebar-card">
+        <div class="card-header">
+            <h4 class="card-header-title">Activity stream</h4>
+
+            <!-- Toggle Button -->
+            <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-dark ml-2" href="javascript:;"
+               data-hs-unfold-options='{
+              "target": "#activitySidebar",
+              "type": "css-animation",
+              "animationIn": "fadeInRight",
+              "animationOut": "fadeOutRight",
+              "hasOverlay": true,
+              "smartPositionOff": true
+             }'>
+                <i class="tio-clear tio-lg"></i>
+            </a>
+            <!-- End Toggle Button -->
+        </div>
+
+        <!-- Body -->
+
+        <!-- End Body -->
+    </div>
+</div>
+
+<!-- End Activity -->
+
+<!-- Welcome Message Modal -->
+
+<div class="modal fade" id="welcomeMessageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-close">
+                <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary" data-dismiss="modal"
+                        aria-label="Close">
+                    <i class="tio-clear tio-lg"></i>
+                </button>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="modal-body p-sm-5">
+                <div class="text-center">
+                    <div class="w-75 w-sm-50 mx-auto mb-4">
+                        <img class="img-fluid" src="\assets\svg\illustrations\graphs.svg" alt="Image Description">
+                    </div>
+
+                    <h4 class="h1">Welcome to Front</h4>
+
+                    <p>We're happy to see you in our community.</p>
+                </div>
+            </div>
+            <!-- End Body -->
+
+            <!-- Footer -->
+            <th:block th:replace="layout/footer :: footer"/>
+            <!-- End Footer -->
+        </div>
+    </div>
+</div>
+
+<!-- End Welcome Message Modal -->
+
+<!-- ========== END SECONDARY CONTENTS ========== -->
+
+<th:block th:replace="layout/script :: script"/>
+
+
+</body>
+</html>

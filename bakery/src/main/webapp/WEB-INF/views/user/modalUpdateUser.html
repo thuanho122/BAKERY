@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:fragment="modalUpdateUser">
+
+    <div class="modal fade"
+         id="modalUpdateUser"
+         data-bs-backdrop="static"
+         data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="staticBackdropLabel">
+                        UPDATE
+                    </h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="frmCreate">
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="fullNameUp" class="col-sm-3 col-form-label input-label">
+                                Full Name
+                                <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
+                                   data-placement="top"></i>
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="input-group input-group-sm-down-break">
+                                    <input type="text" class="form-control" name="fullNameUp" id="fullNameUp">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="ageUp" class="col-sm-3 col-form-label input-label">
+                                Age
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="ageUp" id="ageUp">
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="emailUp" class="col-sm-3 col-form-label input-label">
+                                Email
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="email" class="form-control" name="emailUp" id="emailUp">
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="addressUp" class="col-sm-3 col-form-label input-label">
+                                Address
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="addressUp" id="addressUp">
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="phoneUp" class="col-sm-3 col-form-label input-label">
+                                Phone
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" name="phoneUp" id="phoneUp">
+                            </div>
+                        </div>
+                    </form>
+                    <!-- End Form Group -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" id="btnUpdate" class="btn btn-primary btn-outline-edit update">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        $("#btnUpdate").on("click", function () {
+            // $("#frmUpdate").trigger("submit");
+
+            updateUser();
+        });
+
+        function updateUser() {
+
+            // let user = {
+            //     id: $("#idUp").val(),
+            //     fullName: $("#fullNameUp").val(),
+            //     email: $("#emailUp").val(),
+            //     phone: $("#phoneUp").val(),
+            //     age: $("#ageUp").val(),
+            //     address: $("#addressUp").val()
+            // };
+
+            user.fullName = $("#fullNameUp").val();
+            user.email = $("#emailUp").val();
+            user.phone = $("#phoneUp").val();
+            user.age = $("#ageUp").val();
+            user.address = $("#addressUp").val();
+
+            $.ajax({
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                },
+                type: "PUT",
+                url: "/api/users/update",
+                data: JSON.stringify(user)
+            })
+                .done(function (data) {
+                    let str = `
+                    <tr id="'tr_' + ${data.id}">
+                        <td>${data.id}</td>
+                        <td>${data.fullName}</td>
+                        <td>${data.email}</td>
+                        <td>${data.phone}</td>
+                         <td>${data.age}</td>
+                        <td>${data.address}</td>
+                         <td>
+                            <button class="btn btn-outline-warning d-block h5 mb-0">${data.status}</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-info d-block h5 mb-0">${data.role}</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary edit" data-id="${data.id}">
+                                <i class="fa fa-edit">Edit</i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-danger delete"
+                                    data-id="${data.id}">
+                                <i class="fa fa-ban">Delete</i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+
+                    let currentRow = $("#tr_" + data.id);
+                    currentRow.replaceWith(str);
+
+                    $("#modalUpdateUser").modal("hide");
+
+                    $("#frmCreate")[0].reset();
+
+                    handlerShowModalEditUser();
+
+                    handlerShowConfirmDelete();
+                })
+                .fail(function () {
+                    alert("error Update")
+                })
+        }
+    </script>
+</th:block>

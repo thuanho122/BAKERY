@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ========== HEADER ========== -->
+
+<th:block th:replace="layout/head :: head"/>
+
+<!-- ========== END HEADER ========== -->
+
+
+<main id="content" role="main" class="main">
+    <!-- Content -->
+    <div class="content container-fluid">
+        <!-- Step Form -->
+        <form id="frmCreate" class="js-step-form py-md-5" data-hs-step-form-options='{
+              "progressSelector": "#addUserStepFormProgress",
+              "stepsSelector": "#addUserStepFormContent",
+              "endSelector": "#addUserFinishBtn",
+              "isValidate": false
+              }' th:object="${bakery}" method="post">
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-8">
+                    <!-- Step -->
+                    <ul id="addUserStepFormProgress" class="js-step-progress step step-sm step-icon-sm step step-inline step-item-between mb-3 mb-md-5">
+                        <li class="step-item">
+                            <a class="step-content-wrapper" href="javascript:;" data-hs-step-form-next-options='{
+                                "targetSelector": "#addUserStepProfile"
+                                }'>
+                                <span class="step-icon step-icon-soft-dark">1</span>
+                                <div class="step-content">
+                                    <span class="step-title">Profile</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <!--                        <li class="step-item">-->
+                        <!--                            <a class="step-content-wrapper" href="javascript:;" data-hs-step-form-next-options='{-->
+                        <!--                                "targetSelector": "#addUserStepConfirmation"-->
+                        <!--                                }'>-->
+                        <!--                                <span class="step-icon step-icon-soft-dark">2</span>-->
+                        <!--                                <div class="step-content">-->
+                        <!--                                    <span class="step-title">Confirmation</span>-->
+                        <!--                                </div>-->
+                        <!--                            </a>-->
+                        <!--                        </li>-->
+                    </ul>
+                    <!-- End Step -->
+
+                    <!-- Content Step Form -->
+                    <div id="addUserStepFormContent">
+                        <!-- Card -->
+                        <div id="addUserStepProfile" class="card card-lg active">
+                            <!-- Body -->
+                            <div class="card-body">
+
+                                <!--                                AVATAR-->
+                                <!-- Form Group -->
+                                <!--                                <div class="row form-group">-->
+                                <!--                                    <label class="col-sm-3 col-form-label input-label">Avatar</label>-->
+
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="d-flex align-items-center">-->
+                                <!--                                            &lt;!&ndash; Avatar &ndash;&gt;-->
+                                <!--                                            <label class="avatar avatar-xl avatar-circle avatar-uploader mr-5" for="avatarUploader">-->
+                                <!--                                                <img id="avatarImg" class="avatar-img" src="assets\img\160x160\img1.jpg" alt="Image Description">-->
+
+                                <!--                                                <input type="file" class="js-file-attach avatar-uploader-input" id="avatarUploader" data-hs-file-attach-options='{-->
+                                <!--                                                    "textTarget": "#avatarImg",-->
+                                <!--                                                    "mode": "image",-->
+                                <!--                                                    "targetAttr": "src",-->
+                                <!--                                                    "resetTarget": ".js-file-attach-reset-img",-->
+                                <!--                                                    "resetImg": "./assets/img/160x160/img1.jpg",-->
+                                <!--                                                    "allowTypes": [".png", ".jpeg", ".jpg"]-->
+                                <!--                                                    }'>-->
+                                <!--                                                <span class="avatar-uploader-trigger">-->
+                                <!--                                                    <i class="tio-edit avatar-uploader-icon shadow-soft"></i>-->
+                                <!--                                                </span>-->
+                                <!--                                            </label>-->
+                                <!--                                            &lt;!&ndash; End Avatar &ndash;&gt;-->
+
+                                <!--                                            <button type="button" class="js-file-attach-reset-img btn btn-white">Delete</button>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <!-- End Form Group -->
+
+
+                                <!--bakeryName, description, price, Quantity-->
+
+                                <!-- Form Group -->
+                                <div class="row form-group" >
+                                    <label for="bakeryName" class="col-sm-3 col-form-label input-label">Bakery Name
+                                        <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip" data-placement="top"></i>
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <div class="input-group input-group-sm-down-break">
+                                            <input type="text" class="form-control" name="bakeryName" id="bakeryName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="quantity" class="col-sm-3 col-form-label input-label">Quantity</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="quantity" id="quantity">
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="price" class="col-sm-3 col-form-label input-label">Price</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="price" id="price">
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+                                <!-- Form Group -->
+                                <div class="row form-group">
+                                    <label for="description" class="col-sm-3 col-form-label input-label">Description</label>
+
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" name="description" id="description">
+                                    </div>
+                                </div>
+                                <!-- End Form Group -->
+
+
+
+
+                                <!-- Form Group -->
+                                <!--                                <div class="js-add-field row form-group" data-hs-add-field-options='{-->
+                                <!--                                      "template": "#addPhoneFieldTemplate",-->
+                                <!--                                      "container": "#addPhoneFieldContainer",-->
+                                <!--                                      "defaultCreated": 0-->
+                                <!--                                      }'>-->
+                                <!--                                    <label for="phone" class="col-sm-3 col-form-label input-label">Phone <span class="input-label-secondary">(Optional)</span></label>-->
+
+                                <!--                                    <div class="col-sm-9">-->
+                                <!--                                        <div class="input-group input-group-sm-down-break align-items-center">-->
+                                <!--                                            <input type="text" class="js-masked-input form-control" name="phone" id="phone" placeholder="+x(xxx)xxx-xx-xx" aria-label="+x(xxx)xxx-xx-xx" data-hs-mask-options='{-->
+                                <!--                                                "template": "+0(000)000-00-00"-->
+                                <!--                                                }'>-->
+                                <!--                                        </div>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+
+                                <!-- End Form Group -->
+
+
+
+                            </div>
+                            <!-- End Body -->
+
+
+                            <!-- Footer -->
+                            <div  class="card-footer d-flex justify-content-end align-items-center">
+                                <button type="submit" id="btnCreate" class="btn btn-outline-primary">
+                                    Create Bakery
+                                </button>
+                            </div>
+                            <!-- End Footer -->
+
+                            <!-- Footer -->
+                            <!--                            <div class="card-footer d-flex justify-content-end align-items-center">-->
+                            <!--                                <button type="button" class="btn btn-primary" data-hs-step-form-next-options='{-->
+                            <!--                                    "targetSelector": "#addUserStepConfirmation"-->
+                            <!--                                    }'>-->
+                            <!--                                    Next <i class="tio-chevron-right"></i>-->
+                            <!--                                </button>-->
+                            <!--                            </div>-->
+                            <!-- End Footer -->
+                        </div>
+                        <!-- End Card -->
+
+
+
+                        <!--                        <div id="addUserStepConfirmation" class="card card-lg" style="display: none;">-->
+                        <!--                            &lt;!&ndash; Profile Cover &ndash;&gt;-->
+                        <!--                            <div class="profile-cover">-->
+                        <!--                                <div class="profile-cover-img-wrapper">-->
+                        <!--                                    <img class="profile-cover-img" src="assets\img\1920x400\img1.jpg" alt="Image Description">-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            &lt;!&ndash; End Profile Cover &ndash;&gt;-->
+
+                        <!--                            &lt;!&ndash; Avatar &ndash;&gt;-->
+                        <!--                            <div class="avatar avatar-xxl avatar-circle avatar-border-lg profile-cover-avatar">-->
+                        <!--                                <img class="avatar-img" src="assets\img\160x160\img9.jpg" alt="Image Description">-->
+                        <!--                            </div>-->
+                        <!--                            &lt;!&ndash; End Avatar &ndash;&gt;-->
+
+                        <!--                            &lt;!&ndash; Body &ndash;&gt;-->
+                        <!--                            <div class="card-body">-->
+                        <!--                                <dl class="row">-->
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Full name:</dt>-->
+                        <!--                                    <dd class="col-sm-6">Ella Lauda</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Email:</dt>-->
+                        <!--                                    <dd class="col-sm-6">ella@example.com</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Phone:</dt>-->
+                        <!--                                    <dd class="col-sm-6">+1 (609) 972-22-22</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Organization:</dt>-->
+                        <!--                                    <dd class="col-sm-6">Htmlstream</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Department:</dt>-->
+                        <!--                                    <dd class="col-sm-6">-</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Account type:</dt>-->
+                        <!--                                    <dd class="col-sm-6">Individual</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Country:</dt>-->
+                        <!--                                    <dd class="col-sm-6"><img class="avatar avatar-xss avatar-circle mr-1" src="assets\vendor\flag-icon-css\flags\1x1\gb.svg" alt="Great Britain Flag"> United Kingdom</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">City:</dt>-->
+                        <!--                                    <dd class="col-sm-6">London</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">State:</dt>-->
+                        <!--                                    <dd class="col-sm-6">-</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Address line 1:</dt>-->
+                        <!--                                    <dd class="col-sm-6">45 Roker Terrace, Latheronwheel</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Address line 2:</dt>-->
+                        <!--                                    <dd class="col-sm-6">-</dd>-->
+
+                        <!--                                    <dt class="col-sm-6 text-sm-right">Zip code:</dt>-->
+                        <!--                                    <dd class="col-sm-6">KW5 8NW</dd>-->
+                        <!--                                </dl>-->
+                        <!--                                &lt;!&ndash; End Row &ndash;&gt;-->
+                        <!--                            </div>-->
+                        <!--                            &lt;!&ndash; End Body &ndash;&gt;-->
+
+                        <!--                            &lt;!&ndash; Footer &ndash;&gt;-->
+                        <!--                            <div class="card-footer d-sm-flex align-items-sm-center">-->
+                        <!--                                <button type="button" class="btn btn-ghost-secondary mb-2 mb-sm-0" data-hs-step-form-prev-options='{-->
+                        <!--                                      "targetSelector": "#addUserStepProfile"-->
+                        <!--                                    }'>-->
+                        <!--                                    <i class="tio-chevron-left"></i> Previous step-->
+                        <!--                                </button>-->
+
+                        <!--                                <div class="ml-auto">-->
+                        <!--                                    <button type="button" class="btn btn-white mr-2">Save in drafts</button>-->
+                        <!--                                    <button id="addUserFinishBtn" type="button" class="btn btn-primary">Add user</button>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            &lt;!&ndash; End Footer &ndash;&gt;-->
+                        <!--                        </div>-->
+                    </div>
+                    <!-- End Content Step Form -->
+
+                    <!-- Message Body -->
+                    <!--                    <div id="successMessageContent" style="display:none;">-->
+                    <!--                        <div class="text-center">-->
+                    <!--                            <img class="img-fluid mb-3" src="assets\svg\illustrations\hi-five.svg" alt="Image Description" style="max-width: 15rem;">-->
+
+                    <!--                            <div class="mb-4">-->
+                    <!--                                <h2>Successful!</h2>-->
+                    <!--                                <p>New <span class="font-weight-bold text-dark">Ella Lauda</span> user has been successfully created.</p>-->
+                    <!--                            </div>-->
+
+                    <!--                            <div class="d-flex justify-content-center">-->
+                    <!--                                <a class="btn btn-white mr-3" href="users">-->
+                    <!--                                    <i class="tio-chevron-left ml-1"></i> Back to users-->
+                    <!--                                </a>-->
+                    <!--                                <a class="btn btn-primary" href="add-user">-->
+                    <!--                                    <i class="tio-user-add mr-1"></i> Add new user-->
+                    <!--                                </a>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!-- End Message Body -->
+                </div>
+            </div>
+            <!-- End Row -->
+        </form>
+        <!-- End Step Form -->
+    </div>
+    <!-- End Content -->
+
+    <!-- Footer -->
+
+    <th:block th:replace="layout/footer :: footer"/>
+
+
+
+    <!-- End Footer -->
+</main>
+
+<!-- ========== MAIN CONTENT ========== -->
+
+<!-- Navbar Vertical -->
+
+<!-- End Navbar Vertical -->
+
+<!--<main id="content" role="main" class="main">-->
+
+<!--    &lt;!&ndash; Content &ndash;&gt;-->
+
+<!--    &lt;!&ndash; End Content &ndash;&gt;-->
+
+<!--    &lt;!&ndash; Footer &ndash;&gt;-->
+
+
+
+<!--    &lt;!&ndash; End Footer &ndash;&gt;-->
+
+<!--</main>-->
+
+<!-- ========== END MAIN CONTENT ========== -->
+
+<!-- ========== SECONDARY CONTENTS ========== -->
+
+<!-- Keyboard Shortcuts -->
+
+<!-- End Keyboard Shortcuts -->
+
+<!-- Activity -->
+
+<div id="activitySidebar" class="hs-unfold-content sidebar sidebar-bordered sidebar-box-shadow">
+    <div class="card card-lg sidebar-card">
+        <div class="card-header">
+            <h4 class="card-header-title">Activity stream</h4>
+
+            <!-- Toggle Button -->
+            <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-dark ml-2" href="javascript:;" data-hs-unfold-options='{
+              "target": "#activitySidebar",
+              "type": "css-animation",
+              "animationIn": "fadeInRight",
+              "animationOut": "fadeOutRight",
+              "hasOverlay": true,
+              "smartPositionOff": true
+             }'>
+                <i class="tio-clear tio-lg"></i>
+            </a>
+            <!-- End Toggle Button -->
+        </div>
+
+        <!-- Body -->
+
+        <!-- End Body -->
+    </div>
+</div>
+
+<!-- End Activity -->
+
+<!-- Welcome Message Modal -->
+
+<div class="modal fade" id="welcomeMessageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-close">
+                <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
+                    <i class="tio-clear tio-lg"></i>
+                </button>
+            </div>
+            <!-- End Header -->
+
+            <!-- Body -->
+            <div class="modal-body p-sm-5">
+                <div class="text-center">
+                    <div class="w-75 w-sm-50 mx-auto mb-4">
+                        <img class="img-fluid" src="\assets\svg\illustrations\graphs.svg" alt="Image Description">
+                    </div>
+
+                    <h4 class="h1">Welcome to Front</h4>
+
+                    <p>We're happy to see you in our community.</p>
+                </div>
+            </div>
+            <!-- End Body -->
+
+            <!-- Footer -->
+            <th:block th:replace="layout/footer :: footer"/>
+            <!-- End Footer -->
+        </div>
+    </div>
+</div>
+
+<!-- End Welcome Message Modal -->
+
+<!-- ========== END SECONDARY CONTENTS ========== -->
+
+<th:block th:replace="layout/script :: script"/>
+
+
+</body>
+</html>

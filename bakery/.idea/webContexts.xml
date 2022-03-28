@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/add-user.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/bakerys.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/footer.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/head.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/header.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/layouts.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/script.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/modalCreateUser.html" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/users.html" value="file://$PROJECT_DIR$/src/main/webapp" />
+      </map>
+    </option>
+  </component>
+</project>

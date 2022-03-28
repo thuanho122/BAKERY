@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<!-- ========== HEADER ========== -->
+<th:block th:include="layout/head1 :: head1"/>
+<!--<head>-->
+<!--  <th:block th:include="layout/head :: head"/>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--  <th:block th:include="layout/header :: header"/>-->
+
+<!--  <th:block th:include="layout/sidebar :: sidebar"/>-->
+<!--</body>-->
+<!-- ========== END HEADER ========== -->
+
+<!-- ========== MAIN CONTENT ========== -->
+
+<!-- Navbar Vertical -->
+
+<!-- End Navbar Vertical -->
+
+  <main id="content" role="main" class="main">
+
+      <!-- Footer -->
+
+        <th:block th:replace="layout/footer :: footer"/>
+      <!-- End Footer -->
+
+  </main>
+
+<!-- ========== END MAIN CONTENT ========== -->
+
+<!-- ========== SECONDARY CONTENTS ========== -->
+
+
+<!-- Activity -->
+
+<div id="activitySidebar" class="hs-unfold-content sidebar sidebar-bordered sidebar-box-shadow">
+  <div class="card card-lg sidebar-card">
+    <div class="card-header">
+      <h4 class="card-header-title">Activity stream</h4>
+
+      <!-- Toggle Button -->
+      <a class="js-hs-unfold-invoker btn btn-icon btn-xs btn-ghost-dark ml-2" href="javascript:;" data-hs-unfold-options='{
+              "target": "#activitySidebar",
+              "type": "css-animation",
+              "animationIn": "fadeInRight",
+              "animationOut": "fadeOutRight",
+              "hasOverlay": true,
+              "smartPositionOff": true
+             }'>
+        <i class="tio-clear tio-lg"></i>
+      </a>
+      <!-- End Toggle Button -->
+    </div>
+
+    <!-- Body -->
+
+    <!-- End Body -->
+  </div>
+</div>
+
+<!-- End Activity -->
+
+<!-- Welcome Message Modal -->
+
+<div class="modal fade" id="welcomeMessageModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-close">
+        <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary" data-dismiss="modal" aria-label="Close">
+          <i class="tio-clear tio-lg"></i>
+        </button>
+      </div>
+      <!-- End Header -->
+
+      <!-- Body -->
+      <div class="modal-body p-sm-5">
+        <div class="text-center">
+          <div class="w-75 w-sm-50 mx-auto mb-4">
+            <img class="img-fluid" src="\assets\svg\illustrations\graphs.svg" alt="Image Description">
+          </div>
+
+          <h4 class="h1">Welcome to Front</h4>
+
+          <p>We're happy to see you in our community.</p>
+        </div>
+      </div>
+      <!-- End Body -->
+
+      <!-- Footer -->
+        <th:block th:replace="layout/footer :: footer"/>
+      <!-- End Footer -->
+    </div>
+  </div>
+</div>
+
+<!-- End Welcome Message Modal -->
+
+<!-- ========== END SECONDARY CONTENTS ========== -->
+
+    <th:block th:replace="layout/script :: script"/>
+
+
+</html>
