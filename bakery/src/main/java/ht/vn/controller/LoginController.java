@@ -1,36 +1,30 @@
 package ht.vn.controller;
 
-//import ht.vn.service.UserService;
-import com.sun.tools.internal.ws.processor.model.Model;
-import ht.vn.model.Role;
-import ht.vn.model.Status;
-import ht.vn.model.User;
-import ht.vn.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
 
 @Controller
-@RequestMapping("")
+@RequestMapping
 public class LoginController {
+//
+//@Autowired
+//private UserService userService;
 
-@Autowired
-private UserService userService;
-
-    @GetMapping("/login")
+    @GetMapping
     public ModelAndView showHomePage() {
+
         ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("users");
+
         modelAndView.setViewName("login");
+
         return modelAndView;
     }
-
+//
 //    @PostMapping("/login")
 //    public ModelAndView login(@ModelAttribute("login") User login){
 //        User user = UserDao.checkLogin(login);
@@ -43,7 +37,7 @@ private UserService userService;
 //            return modelAndView;
 //        }
 //    }
-
+//
 //    @PostMapping("/login")
 //    public ModelAndView submit(@ModelAttribute("user") User user) {
 //        if (user != null && user.getEmail() != null & user.getPassword() != null) {
@@ -60,13 +54,6 @@ private UserService userService;
 //            model.addAttribute("error", "Please enter Details");
 //            return "login";
 //        }
-//    }
-
-//    @GetMapping("/user")
-//    public ModelAndView showUsers() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("users");
-//        return modelAndView;
 //    }
 
 //    @GetMapping("/test")

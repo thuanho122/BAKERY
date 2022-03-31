@@ -12,16 +12,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+//    @NotNull(message = "Tên người dùng không được để trống")
+//    @Size(min = 5, max = 30, message = "Tên người dùng phải nằm trong khoảng từ 5 - 25 ký tự")
     @Column(name = "full_name")
     private String fullName;
+
 
     @Column(unique = true, nullable = false)
 //    @NotBlank(message = "Email is mandatory")
 //    @Email(message = "Không đúng định dạng email! Vui lòng nhập lại")
     private String email;
 
-    @NotNull
+
+//    @NotBlank(message = "Số điện thoại phải được nhập")
+//    @Pattern(regexp = "(^$|(84|0[3|5|7|8|9]))+([0-9]{8})", message = "Số điện thoại không đúng định dạng")
     private String phone;
 
 

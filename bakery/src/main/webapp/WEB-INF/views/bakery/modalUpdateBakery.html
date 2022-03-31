@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<th:block th:fragment="modalUpdateBakery">
+
+    <div class="modal fade"
+         id="modalUpdateBakery"
+         data-bs-backdrop="static"
+         data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="staticBackdropLabel">
+                        UPDATE BAKERY
+                    </h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="frmUpdate">
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="bakeryNameUp" class="col-sm-3 col-form-label input-label">
+                                Bakery Name
+                                <i class="tio-help-outlined text-body ml-1" data-toggle="tooltip"
+                                   data-placement="top"></i>
+                            </label>
+                            <div class="col-sm-9">
+                                <div class="input-group input-group-sm-down-break">
+                                    <input type="text" class="form-control" name="bakeryNameUp" id="bakeryNameUp">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="quantityUp" class="col-sm-3 col-form-label input-label">
+                                Quantity
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="quantityUp" id="quantityUp">
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="priceUp" class="col-sm-3 col-form-label input-label">
+                                Price
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" name="priceUp" id="priceUp">
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="descriptionUp" class="col-sm-3 col-form-label input-label">
+                                Description
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="descriptionUp" id="descriptionUp">
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="row form-group">
+                            <label for="imageUp" class="col-sm-3 col-form-label input-label">
+                                Image
+
+                            </label>
+                            <div class="col-sm-9">
+                                <input type="file" class="form-control" name="imageUp" id="imageUp">
+                                <img src="" id="imageShow">
+
+
+                            </div>
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!--                        &lt;!&ndash; Form Group &ndash;&gt;-->
+                        <!--                        <div class="row form-group">-->
+                        <!--                            <label for="imageUp" class="col-sm-3 col-form-label input-label">-->
+                        <!--                                Image-->
+                        <!--                            </label>-->
+                        <!--                            <div class="col-sm-9">-->
+                        <!--                                <input type="file" class="form-control" name="imageUp" id="imageUp">-->
+                        <!--                            </div>-->
+                        <!--&lt;!&ndash;                            <span class="d-block h5 mb-0">&ndash;&gt;-->
+                        <!--&lt;!&ndash;                                    <img width="100" height="100" th:src="@{'/upload/' + ${bakery.image}}">&ndash;&gt;-->
+                        <!--&lt;!&ndash;                                </span>&ndash;&gt;-->
+                        <!--                        </div>-->
+                    </form>
+                    <!-- End Form Group -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" id="btnUpdate" class="btn btn-primary btn-outline-edit update">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        $("#btnUpdate").on("click", function () {
+            // $("#frmUpdate").trigger("submit");
+
+            updateBakery();
+        });
+
+        function updateBakery() {
+
+            // let user = {
+            //     id: $("#idUp").val(),
+            //     fullName: $("#fullNameUp").val(),
+            //     email: $("#emailUp").val(),
+            //     phone: $("#phoneUp").val(),
+            //     age: $("#ageUp").val(),
+            //     address: $("#addressUp").val()
+            // };
+            bakeryForm.id = $("#bakeryNameUp").attr("data-item-id");
+            bakeryForm.bakeryName = $("#bakeryNameUp").val();
+            bakeryForm.quantity = $("#quantityUp").val();
+            bakeryForm.price = $("#priceUp").val();
+            bakeryForm.description = $("#descriptionUp").val()
+            bakeryForm.image = $("#image")[0].files[0];
+
+            // let formData = new FormData();
+            // formData.append("bakeryName", bakeryName);
+            // formData.append("price", parseInt(price));
+            // formData.append("quantity", parseInt(quantity));
+            // formData.append("description", description);
+            // formData.append("image", image);
+
+            $.ajax({
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                },
+                type: "PUT",
+                url: "/api/bakerys/update",
+                data: JSON.stringify(bakeryForm)
+            })
+                .done(function (data) {
+                    let str = `
+                    <tr id="'tr_' + ${data.id}">
+                        <td>${data.id}</td>
+                        <td>${data.bakeryName}</td>
+                        <td>${data.quantity}</td>
+                        <td>${data.price}</td>
+                        <td>${data.description}</td>
+                        <td>
+                            <span class="d-block h5 mb-0">
+                                <img width="100" height="100" th:src="">
+                            </span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary edit" data-id="${data.id}">
+                                <i class="fa fa-edit">Edit</i>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-outline-danger delete"
+                                    th:data-id="${data.id}">
+                                <i class="fa fa-ban">Delete</i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+
+                    let currentRow = $("#tr_" + data.id);
+                    currentRow.replaceWith(str);
+
+                    $("#modalUpdateBakery").modal("hide");
+
+                    $("#frmUpdate")[0].reset();
+
+                    handlerShowModalEditBakery();
+
+                    // handlerShowConfirmDelete();
+                })
+                .fail(function () {
+                    alert("error Update")
+                })
+        }
+    </script>
+</th:block>

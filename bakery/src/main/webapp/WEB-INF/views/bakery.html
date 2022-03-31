@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ========== HEADER ========== -->
+
+<th:block th:replace="layout/head1 :: head1"/>
+
+<!-- ========== END HEADER ========== -->
+
+<!-- ========== MAIN CONTENT ========== -->
+<!-- Navbar Vertical -->
+
+<!-- End Navbar Vertical -->
+
+<main id="content" role="main" class="main">
+    <!-- Content -->
+    <div class="content container-fluid">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-end">
+                <div class="col-sm mb-2 mb-sm-0">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-no-gutter">
+                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Pages</a></li>
+                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Users</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Overview</li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="page-header-title">Users</h1>
+                </div>
+
+                <div class="col-sm-auto">
+                    <a class="btn btn-primary" href="/add-user">
+                        <i class="tio-user-add mr-1"></i> Add Staff
+                    </a>
+                </div>
+            </div>
+            <!-- End Row -->
+        </div>
+        <!-- End Page Header -->
+
+        <!-- Card -->
+        <div class="card">
+            <!-- Header -->
+            <div class="card-header">
+                <div class="row justify-content-between align-items-center flex-grow-1">
+                    <!--SEARCH-->
+                    <div class="col-sm-6 col-md-4 mb-3 mb-sm-0">
+                        <form>
+                            <!-- Search -->
+                            <div class="input-group input-group-merge input-group-flush">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="tio-search"></i>
+                                    </div>
+                                </div>
+                                <input id="datatableSearch" type="search" class="form-control"
+                                       placeholder="Search users" aria-label="Search users">
+                            </div>
+                            <!-- End Search -->
+                        </form>
+                    </div>
+
+
+                    <!--XOÁ-->
+                    <div class="col-sm-6">
+                        <div class="d-sm-flex justify-content-sm-end align-items-sm-center">
+                            <!-- Datatable Info -->
+                            <div id="datatableCounterInfo" class="mr-2 mb-2 mb-sm-0" style="display: none;">
+                                <div class="d-flex align-items-center">
+                                    <span class="font-size-sm mr-3">
+                                        <span id="datatableCounter">0</span>Selected
+                                    </span>
+                                    <a class="btn btn-sm btn-outline-danger" href="javascript:;">
+                                        <i class="tio-delete-outlined"></i> Delete
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- End Datatable Info -->
+
+                            <!-- Unfold -->
+
+                            <!-- End Unfold -->
+
+                            <!-- Unfold -->
+
+                            <!-- End Unfold -->
+                        </div>
+                    </div>
+                </div>
+                <!-- End Row -->
+            </div>
+            <!-- End Header -->
+
+            <!-- Table -->
+            <div class="table-responsive datatable-custom">
+                <table id="tbBakery"
+                       class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
+                       data-hs-datatables-options='{
+                         "columnDefs": [{
+                            "targets": [0, 7],
+                            "orderAble": false
+                          }],
+                         "order": [],
+                         "info": {
+                           "totalQty": "#datatableWithPaginationInfoTotalQty"
+                         },
+                         "search": "#datatableSearch",
+                         "entries": "#datatableEntries",
+                         "pageLength": 15,
+                         "isResponsive": false,
+                         "isShowPaging": false,
+                         "pagination": "datatablePagination"
+                     }'>
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="table-column-pr-0">
+                            <div class="custom-control custom-checkbox">
+                                <input id="datatableCheckAll" type="checkbox" class="custom-control-input">
+                                <label class="custom-control-label" for="datatableCheckAll"></label>
+                            </div>
+                        </th>
+
+                        <th class="table-column-pl-0">Bakery Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                        <th>LogoPath</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <th:block th:each="bakery : ${bakerys}">
+                        <tr th:id="'tr_' + ${bakery.id}">
+                            <td th:text="${bakery.id}"></td>
+                            <td th:text="${bakery.bakeryName}"></td>
+                            <td th:text="${bakery.price}"></td>
+                            <td th:text="${bakery.quantity}"></td>
+                            <td th:text="${bakery.description}"></td>
+                            <td>
+                                <span class="d-block h5 mb-0">
+                                    <img width="100" height="100" th:src="@{'/upload/' + ${bakery.image}}">
+                                </span>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-outline-primary edit" th:data-id="${bakery.id}">
+                                    <i class="fa fa-edit">Edit</i>
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-outline-danger delete"
+                                        th:data-id="${bakery.id}">
+                                    <i class="fa fa-ban">Delete</i>
+                                </button>
+                            </td>
+                        </tr>
+                        <!--                        <tr>-->
+                        <!--                            <td class="table-column-pr-0">-->
+                        <!--                                <div class="custom-control custom-checkbox">-->
+                        <!--                                    <input type="checkbox" class="custom-control-input" id="usersDataCheck1">-->
+                        <!--                                    <label class="custom-control-label" for="usersDataCheck1"></label>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                            <td class="table-column-pl-0">-->
+                        <!--                                <a class="d-flex align-items-center" href="user-profile.html">-->
+                        <!--                                    <div class="avatar avatar-circle">-->
+                        <!--                                        <img class="avatar-img" src="assets\img\160x160\img10.jpg" alt="Image Description">-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="ml-3">-->
+                        <!--                                        <span class="d-block h5 text-hover-primary mb-0" th:text="${bakery.bakeryName}">-->
+                        <!--                                            <i class="tio-verified text-primary"-->
+                        <!--                                               data-toggle="tooltip"-->
+                        <!--                                               data-placement="top"-->
+                        <!--                                                title="Top endorsed">-->
+                        <!--                                            </i>-->
+                        <!--                                        </span>-->
+                        <!--                                    </div>-->
+                        <!--                                </a>-->
+                        <!--                            </td>-->
+                        <!--                            <td>-->
+                        <!--                                <span class="d-block h5 mb-0" th:text="${bakery.price}"></span>-->
+
+                        <!--                            </td>-->
+                        <!--                            <td>-->
+                        <!--                                <span class="d-block h5 mb-0" th:text="${bakery.quantity}"></span>-->
+                        <!--                                &lt;!&ndash;                                    <span class="d-block font-size-sm">Human resources</span>&ndash;&gt;-->
+                        <!--                            </td>-->
+                        <!--                            <td>-->
+                        <!--                                <span class="d-block h5 mb-0" th:text="${bakery.description}"></span>-->
+
+                        <!--                            </td>-->
+                        <!--                            <td>-->
+                        <!--                                <span class="d-block h5 mb-0">-->
+                        <!--                                    <img width="100" height="100" th:src="@{'/upload/' + ${bakery.image}}">-->
+                        <!--                                </span>-->
+
+                        <!--                            </td>-->
+
+
+                        <!--                            <td>-->
+                        <!--                                <div id="editUserPopover"-->
+                        <!--                                     data-toggle="popover-dark"-->
+                        <!--                                     data-placement="left"-->
+                        <!--                                     title="<div class='d-flex align-items-center'>Edit user-->
+                        <!--                                                 <a href='#!' class='close close-light ml-auto'>-->
+                        <!--                                                     <i id='closeEditUserPopover' class='tio-clear'></i>-->
+                        <!--                                                 </a>-->
+                        <!--                                             </div>"-->
+                        <!--                                     data-content="Check out this Edit user modal example."-->
+                        <!--                                     data-html="true">-->
+                        <!--                                    <a class="btn btn-sm btn-white"-->
+                        <!--                                       href="javascript:;"-->
+                        <!--                                       data-toggle="modal"-->
+                        <!--                                       data-target="#editUserModal">-->
+                        <!--                                        <i class="tio-edit"></i> Edit-->
+                        <!--                                    </a>-->
+                        <!--                                </div>-->
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
+                    </th:block>
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Table -->
+
+
+            <!-- paging -->
+            <th:block th:replace="layout/paging :: paging"/>
+            <!-- End Paging -->
+
+        </div>
+        <!-- End Card -->
+    </div>
+    <!-- End Content -->
+
+
+    <!-- Footer -->
+
+    <th:block th:replace="layout/footer :: footer"/>
+
+    <!-- End Footer -->
+
+</main>
+<!-- ========== END MAIN CONTENT ========== -->
+
+<!-- ========== SECONDARY CONTENTS ========== -->
+<!-- Keyboard Shortcuts -->
+
+<!-- End Keyboard Shortcuts -->
+
+
+<!-- Activity -->
+<!-- Welcome Message Modal -->
+
+<th:block th:replace="layout/activityWelcome :: activityWelcome"/>
+
+<!-- End Activity -->
+<!-- End Welcome Message Modal -->
+
+<!-- ========== END SECONDARY CONTENTS ========== -->
+
+<th:block th:replace="layout/script :: script"/>
+
+<th:block th:replace="bakery/modalUpdateBakery :: modalUpdateBakery"/>
+<script>
+    let bakeryForm = new BakeryFrom();
+
+    // let bakery = new  Bakery();
+
+    function handlerShowModalEditBakery() {
+        $("button.edit").on("click", function () {
+            let id = $(this).data("id");
+
+            $.ajax({
+                type: "GET",
+                url: "/api/bakerys/" + id
+            })
+                .done(function (data) {
+                    // bakeryForm = data;
+                    // $("#idUp").val(data.id);
+                    $("#bakeryNameUp").val(data.bakeryName);
+                    $("#bakeryNameUp").attr("data-item-id", data.id);
+
+                    $("#quantityUp").val(data.quantity);
+                    $("#priceUp").val(data.price);
+                    $("#descriptionUp").val(data.description);
+                    $("#imageShow").attr("src", "/upload/" + data.image);
+
+                    $("#modalUpdateBakery").modal("show");
+                })
+                .fail(function (resp) {
+                    alert("Show modal update bakery error");
+                })
+        });
+    }
+
+    function doDelete(bakeryId) {
+        $.ajax({
+            type: "DELETE",
+            url: "/api/bakerys/" + bakeryId
+
+        }).done(function () {
+            $("#tr_" + bakeryId).remove();
+            // getAllCustomer();
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+            )
+
+        }).fail(function () {
+            Swal.fire({
+                position: 'mid-center',
+                title: 'Customer\'s information is invalid',
+                icon: 'error',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+        })
+    }
+
+    function handlerShowConfirmDelete() {
+        $("button.delete").on('click', function () {
+            let bakeryId = $(this).data("id");
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    doDelete(bakeryId);
+
+                }
+            })
+        })
+
+    }
+
+    handlerShowConfirmDelete()
+    handlerShowModalEditBakery();
+</script>
+</html>

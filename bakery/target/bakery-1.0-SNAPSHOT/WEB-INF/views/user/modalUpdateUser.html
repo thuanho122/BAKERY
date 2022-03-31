@@ -12,13 +12,16 @@
             <div class="modal-content ">
                 <div class="modal-header">
                     <h3 class="modal-title" id="staticBackdropLabel">
-                        UPDATE
+                        UPDATE USER
                     </h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <form id="frmCreate">
+                    <div class="modal-alert-danger hide">
+
+                    </div>
+                    <form id="frmUpdate">
                         <!-- Form Group -->
                         <div class="row form-group">
                             <label for="fullNameUp" class="col-sm-3 col-form-label input-label">
@@ -93,11 +96,11 @@
 
     <script>
 
-        $("#btnUpdate").on("click", function () {
-            // $("#frmUpdate").trigger("submit");
-
-            updateUser();
-        });
+        // $("#btnUpdate").on("click", function () {
+        //     // $("#frmUpdate").trigger("submit");
+        //
+        //     updateUser();
+        // });
 
         function updateUser() {
 
@@ -115,6 +118,7 @@
             user.phone = $("#phoneUp").val();
             user.age = $("#ageUp").val();
             user.address = $("#addressUp").val();
+
 
             $.ajax({
                 headers: {
@@ -165,9 +169,30 @@
 
                     handlerShowConfirmDelete();
                 })
-                .fail(function () {
-                    alert("error Update")
+                .fail(function (jqXHR) {
+                    // let str = ``;
+                    // if (jqXHR.responseJSON) {
+                    //     $.each(jqXHR.responseJSON, function (key, value) {
+                    //         str += `<label id="${key}-error" class="error" for="${key}">${value}</lable><br>`;
+                    //         $("#" + key).addClass("error");
+                    //     });
+                    // } else {
+                    //     str += `<label id= "message-error" class= "error" for= "message">ERROR_400</label>`;
+                    // }
+                    // $("#modalUpdateUser .modal-body .modal-alert-danger").removeClass("hide").addClass("show");
+                    // $("#modalUpdateUser .modal-body .modal-alert-danger").html(str);
                 })
         }
+
+        // $("#btnUpdate").on("click", function () {
+        //     $("#frmUpdate").trigger("submit");
+        // });
+        //
+        // $("#modalUpdateUser").one('hidden.bs.modal', function () {
+        //     $("#modalUpdateUser .modal-body .modal-alert-danger").empty();
+        //     $("#modalUpdateUser .modal-body .modal-alert-danger").removeClass("show").addClass("hide");
+        //     $("#modalUpdateUser input.error").removeClass("error");
+        //     $("#frmUpdate")[0].reset();
+        // });
     </script>
 </th:block>

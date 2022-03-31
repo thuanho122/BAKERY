@@ -18,28 +18,54 @@ public class Bakery {
     @Column(name = "bakery_name")
     private String bakeryName;
 
-    @Digits(integer = 12, fraction = 0)
     @Column(updatable = false)
     private BigDecimal price;
 
-    @Digits(integer = 12, fraction = 0)
     @Column(updatable = false)
     private BigDecimal quantity = BigDecimal.valueOf(0);
 
     private String description;
 
-    private String logoPath;
+    private String image;
+
+    @Column(columnDefinition = "boolean default false")
+    private boolean deleted;
 
     public Bakery() {
     }
 
-    public Bakery(Long id, String bakeryName, BigDecimal price, BigDecimal quantity, String description, String logoPath) {
+    public Bakery(Long id, String bakeryName, String description, String image) {
+        this.id = id;
+        this.bakeryName = bakeryName;
+        this.description = description;
+        this.image = image;
+    }
+
+    public Bakery(String bakeryName, BigDecimal price, BigDecimal quantity, String description, String image) {
+        this.bakeryName = bakeryName;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.image = image;
+    }
+
+    public Bakery(Long id, String bakeryName, BigDecimal price, BigDecimal quantity, String description, String image) {
         this.id = id;
         this.bakeryName = bakeryName;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
-        this.logoPath = logoPath;
+        this.image = image;
+    }
+
+    public Bakery(Long id, String bakeryName, BigDecimal price, BigDecimal quantity, String description, String image, boolean deleted) {
+        this.id = id;
+        this.bakeryName = bakeryName;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.image = image;
+        this.deleted = deleted;
     }
 
     public Long getId() {
@@ -82,11 +108,19 @@ public class Bakery {
         this.description = description;
     }
 
-    public String getLogoPath() {
-        return logoPath;
+    public String getImage() {
+        return image;
     }
 
-    public void setLogoPath(String logoPath) {
-        this.logoPath = logoPath;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 }
